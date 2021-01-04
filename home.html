@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>image uploader</title>
+</head>
+<style>
+
+</style>
+<body>
+    <div class="container">
+        <div class="py-5 text-center bg-secondary text-white">
+            <h1 class="mb-3">Upload Image</h1>
+            <form action = "" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                {{form}}
+                <input type="submit" class="btn btn-danger" value="Upload">
+            </form>
+        </div>
+        <div class="row">
+            {% for x in img %}
+                <div class="col-md-4 col-sm-6 col-12">
+                    <div class="card m-2">
+                        <img src="{{x.photo.url}}" alt="" class="card-img-top" height="200px">
+                        <div class="card-footer">
+                            <small class="text-muted">{{x.date}}</small>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
